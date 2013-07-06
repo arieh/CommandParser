@@ -1,4 +1,4 @@
-CommandParser
+Commandline Parser
 ============
 
 CommandParser is a simple tool for parsing our commandline arguments, and printing help text for them.
@@ -14,7 +14,7 @@ CommandParser is a simple tool for parsing our commandline arguments, and printi
 var CommandLine = require('commandline-parser').Parser,
 	parser = new Parser({
 		name : "command",
-		desc : 'Description",
+		desc : 'Description',
 		extra : 'Extra text'
 	});
 
@@ -83,7 +83,7 @@ parser.exec();//will execute all actions that have values assigned to them
 ```js
 parser  new Parser({
 	name : "command",
-	desc : 'Description",
+	desc : 'Description',
 	extra : 'Extra text',
 	arguments : {
 		foo : {
