@@ -1,6 +1,6 @@
 {
   "name": "commandline-parser",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A commandline parser tool for node.js",
   "main": "./lib/Parser",
   "repository": {
