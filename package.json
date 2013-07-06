@@ -1,13 +1,12 @@
 {
-  "name": "command-parser",
-  "version": "0.0.1",
+  "name": "commandline-parser",
+  "version": "0.1.0",
   "description": "A commandline parser tool for node.js",
   "main": "./lib/CommandParser",
   "repository": {
       "type": "git",
       "url": "git@github.com:arieh/CommandParser.git"
   },
-  "author": "arieh@glzr.co.il",
   "license": "MIT",
   "readmeFilename": "README.md"
 }
