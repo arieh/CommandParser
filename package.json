@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A commandline parser tool for node.js",
   "main": "./lib/CommandParser",
-  "repository": "",
+  "repository": "git@github.com:arieh/CommandParser.git",
   "author": "arieh.glazer@gmail.com",
   "license": "BSD"
 }
