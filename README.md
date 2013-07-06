@@ -70,4 +70,6 @@ parser.registerActions({
 		console.log('Foo was set with the value of ', value);
 	}
 });
+
+parser.exec();//will execute all actions that have values assigned to them
 ```
