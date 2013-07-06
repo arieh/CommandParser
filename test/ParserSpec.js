@@ -108,4 +108,12 @@ describe("Parser Spec", function(){
 
             assert.deepEqual(results, {'foo':true,'bar':'a b c', 'baz':1});
     });
+
+    it("Should support legacy syntax", function(){
+        var parser = new Parser('cmd','test','extra');
+
+        assert.equal(parser.name,'cmd');
+        assert.equal(parser.desc,'test');
+        assert.equal(parser.extra,'extra');
+    });
 });
