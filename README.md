@@ -15,7 +15,7 @@ parser.addArgument('foo', 'assign a value to foo');
 //with all arguments
 parser.addArgument('bar' ,{
 	flags : ['b','bar'], //default is name
-	desc : "assign a value to foo", //default is ''
+	desc : "assign a value to bar", //default is ''
 	optional : false //default is true
 });
 
@@ -29,7 +29,7 @@ parser.printHelp();
 
 	--foo      assign a value to foo
 	-h, --help help
-	-b, --bar  assign a value to foo
+	-b, --bar  assign a value to bar
 
 	Extra text
 */
