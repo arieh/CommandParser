@@ -1,0 +1,9 @@
+{
+  "name": "CommandParser",
+  "version": "0.0.1",
+  "description": "A commandline parser tool",
+  "main": "./lib/CommandParser",
+  "repository": "",
+  "author": "arieh.glazer@gmail.com",
+  "license": "BSD"
+}
