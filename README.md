@@ -12,7 +12,11 @@ CommandParser is a simple tool for parsing our commandline arguments, and printi
 ### Registering arguments
 ```js
 var CommandLine = require('commandline-parser').Parser,
-	parser = new CommandLine("Command", "Description", "Extra text");
+	parser = new Parser({
+		name : "command",
+		desc : 'Description",
+		extra : 'Extra text'
+	});
 
 //simplest form
 parser.addArgument('foo', 'assign a value to foo');
@@ -31,7 +35,7 @@ parser.addArgument('bar' ,{
 parser.printHelp();
 
 /*
-	Help for Command
+	Help for command
 
 	Description
 
@@ -72,4 +76,23 @@ parser.registerActions({
 });
 
 parser.exec();//will execute all actions that have values assigned to them
+```
+
+## Full constructor options:
+
+```js
+parser  new Parser({
+	name : "command",
+	desc : 'Description",
+	extra : 'Extra text',
+	arguments : {
+		foo : {
+			flags : ['f'],
+			optional : false,
+			desc : 'description of command',
+			action : function(value, parser){}
+		}
+	}
+});
+
 ```

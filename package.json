@@ -7,6 +7,12 @@
       "type": "git",
       "url": "git@github.com:arieh/CommandParser.git"
   },
+  "devDependencies": {
+      "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha ./test/ParserSpec.js"
+  },
   "license": "MIT",
   "readmeFilename": "README.md"
 }
