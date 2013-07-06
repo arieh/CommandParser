@@ -3,8 +3,13 @@ CommandParser
 
 CommandParser is a simple tool for parsing our commandline arguments, and printing help text for them.
 
+## Installation
+
+`npm install commandline-parser`
+
 ## Usage
 
+### Registering arguments
 ```js
 var CommandLine = require('commandline-parser').Parser,
 	parser = new CommandLine("Command", "Description", "Extra text");
@@ -16,10 +21,13 @@ parser.addArgument('foo', 'assign a value to foo');
 parser.addArgument('bar' ,{
 	flags : ['b','bar'], //default is name
 	desc : "assign a value to bar", //default is ''
-	optional : false //default is true
+	optional : false //default is true,
+	action : function(value, parser){}
 });
+```
+### Printing help text
 
-
+```js
 parser.printHelp();
 
 /*
@@ -33,7 +41,14 @@ parser.printHelp();
 
 	Extra text
 */
+```
 
+Also note, that the parser already pre-registers the `-h` and `--help` commands for the `printHelp` method
+
+
+### Parsing arguments
+
+```js
 //for the following command:
 //$: Command -foo='a' -b a.js b.js
 
@@ -41,8 +56,18 @@ parser.get('foo');//a
 parser.get('bar');//true
 parser.getArguments();//['a.js','b.js']
 
-//for the following command:
-//$: Command -foo='a'
 
-console.log(parser.isAnythingMissing());//['bar']
+//If we want to test which required arguments are missing we can use
+parser.isAnythingMissing();//returns an array of missing parameters
+```
+
+### Registering actions
+You can use the parser to route arguments to functions:
+
+```js
+parser.registerActions({
+	foo : function(value, parser){
+		console.log('Foo was set with the value of ', value);
+	}
+});
 ```

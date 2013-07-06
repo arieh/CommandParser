@@ -1,5 +1,5 @@
 #! /usr/bin/env node    
-var CommandLine = require('./lib/CommandParser').CommandParser,
+var CommandLine = require('./lib/Parser').Parser,
 	parser = new CommandLine("Command", "Description", "Extra text");
 
 //simplest form
@@ -12,5 +12,10 @@ parser.addArgument('bar' ,{
 	optional : false //default is true
 });
 
+parser.registerActions({
+	bar : function(value, parser){
+		console.log("Bar recieved the value of", value);
+	}
+});
 
-parser.printHelp();
+parser.exec();
