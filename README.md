@@ -50,7 +50,7 @@ Also note, that the parser already pre-registers the `-h` and `--help` commands 
 
 ```js
 //for the following command:
-//$: Command -foo='a' -b a.js b.js
+//$: Command --foo='a' -b a.js b.js
 
 parser.get('foo');//a
 parser.get('bar');//true
@@ -70,4 +70,6 @@ parser.registerActions({
 		console.log('Foo was set with the value of ', value);
 	}
 });
+
+parser.exec();//will execute all actions that have values assigned to them
 ```
