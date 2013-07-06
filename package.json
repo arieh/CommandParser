@@ -1,7 +1,7 @@
 {
   "name": "CommandParser",
   "version": "0.0.1",
-  "description": "A commandline parser tool",
+  "description": "A commandline parser tool for node.js",
   "main": "./lib/CommandParser",
   "repository": "",
   "author": "arieh.glazer@gmail.com",
