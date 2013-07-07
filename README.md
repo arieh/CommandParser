@@ -96,3 +96,22 @@ parser  new Parser({
 });
 
 ```
+
+## An example of all possible argument assignments
+
+```js
+$: cmd -a -bcd -e aaa -fgh bbb --foo --bar=ccc ddd eee
+
+/*
+a:true
+b:true
+c:true
+e:"aaa"
+f:true
+g:true
+h:"bbb"
+foo:tue
+bar:ccc
+getArguments:["ddd","eee"]
+*/
+```

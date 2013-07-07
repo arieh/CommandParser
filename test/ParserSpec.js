@@ -20,30 +20,50 @@ function createParser(options) {
 }
 
 describe("Parser Spec", function(){
-    var args;
+    var args,
+        start = ['node','file.js'];
+
+    function resetArgs(){
+        process.argv = start;
+    }
+
 
     beforeEach(function(){
         args = process.argv;
-        process.argv = ['node','file.js'];
+        resetArgs();
     });
 
     afterEach(function(){
         process.argv = args;
     });
 
-    it("Should receive the right number of argumens", function(){
+    describe("Should receive the right number of arguments", function(){
         process.argv.push("-f","--bar=1");
-        var parser = createParser({
-            arguments : {
+        var args ={
                 "foo" : {
-                    flags : ['f','foo']
+                flags : ['f','foo']
                 },
                 "bar" : {}
-            }
-        });
+            },
+            parser = createParser({
+                arguments : args
+            });
 
         assert.equal(parser.get('foo'), true);
         assert.equal(parser.get('bar'),1);
+
+        it("Should handle assignment properly", function(){
+            resetArgs();
+            process.argv.push('-f','a');
+            parser = createParser({arguments:args});
+            assert.equal(parser.get('foo'),'a');
+
+            resetArgs();
+            process.argv.push('--bar=a','-f','b');
+            parser = createParser({arguments:args});
+            assert.equal(parser.get('bar'),'a');
+            assert.equal(parser.get('foo'),'b');
+        });
     });
 
     it("Should print help text in the proper order", function(){
@@ -115,5 +135,35 @@ describe("Parser Spec", function(){
         assert.equal(parser.name,'cmd');
         assert.equal(parser.desc,'test');
         assert.equal(parser.extra,'extra');
+    });
+
+    it("Should handle chained single-flags properly", function(){
+        process.argv.push('-abc');
+        var
+            args = {
+                a : {},
+                b : {},
+                c : {}
+            },
+            parser = createParser({
+                arguments : args
+            });
+
+        ['a','b','c'].forEach(function(name){
+            assert.equal(parser.get(name), true, name +" should be true");
+        });
+
+        it("Should handle chaining and assignment properly", function(){
+            resetArgs();
+            process.argv.push('-abc','abc');
+            var parser = createParser({arguments:args});
+
+
+            ['a','b'].forEach(function(name){
+                assert.equal(parser.get(name), true, name +" should be true");
+            });
+
+            assert.equal(parser.get('c'), 'abc');
+        });
     });
 });
